@@ -3,7 +3,6 @@ to make a http GET call to my teamtreehouse account (set to public)
 return the JSON
  */
 var http = require('http');
-
 var username = 'ithanhpham';
 
 function printMessage(username, badgeCount, points) {
@@ -21,13 +20,10 @@ var request = http.get('http://teamtreehouse.com/' + username + '.json', functio
         body += chunk;
     });
 
-    //when finished log out full body
-    //this is a string that will need to be parsed to an obj
     response.on('end', function() {
-        console.log(typeof(body) + ' data: ' + body);
+        var profile = JSON.parse(body);
+        printMessage(username, profile.badges.length, profile.points.JavaScript);
     });
-
-
 
 });
 
