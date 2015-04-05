@@ -12,8 +12,25 @@ function printMessage(username, badgeCount, points) {
 }
 
 var request = http.get('http://teamtreehouse.com/' + username + '.json', function(response) {
-    console.log('Status: ' + response.statusCode);
+    var body = "";
+
+    console.log('Status: ' + response.statusCode)
+
+    //read data, concat during the stream
+    response.on('data', function(chunk) {
+        body += chunk;
     });
+
+    //when finished log out full body
+    //this is a string that will need to be parsed to an obj
+    response.on('end', function() {
+        console.log(typeof(body) + ' data: ' + body);
+    });
+
+
+
+});
+
 
 request.on('error', function(error) {
     console.error('Error: ' + error.message);
