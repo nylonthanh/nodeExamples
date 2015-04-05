@@ -2,4 +2,9 @@
  * this will get a teamtreehouse user profile
  */
 var profile = require('./profile');
-profile.get('ithanhpham');
+var users = process.argv.slice(2);
+
+users.forEach(profile.get);
+
+
+

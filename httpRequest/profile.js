@@ -21,8 +21,6 @@ function get(username) {
     var request = http.get('http://teamtreehouse.com/' + username + '.json', function (response) {
         var body = "";
 
-        console.log('Status: ' + response.statusCode)
-
         //read data, concat during the stream
         response.on('data', function (chunk) {
             body += chunk;
