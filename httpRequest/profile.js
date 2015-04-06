@@ -49,3 +49,4 @@ function get(username) {
 }
 
 module.exports.get = get;
+module.exports.printError = printError;
